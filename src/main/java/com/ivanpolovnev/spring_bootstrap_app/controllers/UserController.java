@@ -8,15 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserController {
-
     @GetMapping("/user")
     public String getUserPage(Authentication authentication, Model model) {
         User user = (User) authentication.getPrincipal();
-        model.addAttribute("firstname", user.getFirstname());
-        model.addAttribute("lastname", user.getLastname());
-        model.addAttribute("age", user.getAge());
-        model.addAttribute("email", user.getEmail());
-        model.addAttribute("roles", user.getAuthorities());
+        model.addAttribute("user", user);
         return "user";
     }
 }
