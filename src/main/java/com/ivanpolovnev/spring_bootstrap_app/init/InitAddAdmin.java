@@ -24,12 +24,12 @@ public class InitAddAdmin {
     }
 
     @PostConstruct
-    void init() {
+    public void init() {
         Role adminRole = roleRepository.findByName("ROLE_ADMIN")
-                .orElseGet(() -> roleRepository.save(new Role()));
+                .orElseGet(() -> roleRepository.save(new Role("ROLE_ADMIN")));
 
         Role userRole = roleRepository.findByName("ROLE_USER")
-                .orElseGet(() -> roleRepository.save(new Role()));
+                .orElseGet(() -> roleRepository.save(new Role("ROLE_USER")));
 
         if (userRepository.findByEmail("admin@mail.com").isEmpty()) {
             User user = new User();
